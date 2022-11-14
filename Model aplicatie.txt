@@ -1,0 +1,161 @@
+ class UserDataValidation {
+    + dataValidation(string data): bool
+    + genderValidation(bool female, bool male) : int
+    + isEmailValid(string email) : int
+    + passwordValidation(string password, string passwordConfirmation) : bool
+    + phoneNumberValidation(string phone) : bool
+    + printPasswordError(string error): void
+  }
+
+  class ItemsModel {
+    + idutilizator : string
+    + idprodus : string
+    + nume : string
+    + adresa : string
+    + email : string
+    + telefon : string
+    + tiputilizator : string
+    + datainregistrare : string
+    + sex : string
+    + denumireprodus : string
+    + categorieprodus : string
+    + detaliiprodus : string
+    + dataincarcareprodus : string
+    + imagineprodus : string
+    
+  }
+Form <|-- DisplayItemForm
+Form <|-- UserInfoForm
+
+DisplayItemForm o-- "1" UserInfoForm
+
+
+class Form{
+}
+
+class StartupForm {
+  - accountInformations_ : Dictionary<string, string>
+  - backToRegisterLinkLabel_Click(object sender, EventArgs e) : void
+  - createMD5(string input) : string
+  - isEmailValid() : bool
+  - loginButton_Click(object sender, EventArgs e) : void
+  - moderatorRegistrationButton_Click(object sender, EventArgs e) : void  
+  - passwordValidation(Dictionary<string,string> passwordReset) : void
+  - resetPasswordButton_Click(object sender, EventArgs e) : void
+  - showPasswordResetCheckBox_CheckedChanged(object sender, EventArgs e): void
+  - submitResetPasswordButton_Click(object sender, EventArgs e) : void
+  - userRegistrationButton_Click(object sender, EventArgs e) : void
+  ( . . . )
+}
+
+class RegisterForm {
+  - accountInformations_ : Dictionary<string, string>
+  - api_ : API
+  - isSpecialUser_ : bool
+  - validationData_ : UserDataValidation
+  - CreateMD5(string input) : string
+  - registerButton_Click(object sender, EventArgs e) : void
+  - showPasswordCheckBox_CheckedChanged(object sender, EventArgs e) : void
+  -
+}
+
+class MenuForm{
+  - accountInformations_ : Dictionary<string, string>
+  - api_ : API
+  - displayInfo_ : bool
+  - displayitemform_ : DisplayItemForm
+  - itemImageAdded_ : bool
+  - itemToShow_ : ListViewItem
+  - startupForm_ : StartupForm
+  - uploadimage_ : Image
+  - userInfo_ : UserInfoForm
+  
+  - addProductPhoto_Click(object sender, EventArgs e) : void
+  - displayItemsOnReq(string typeOfReq) : void
+  - displayUnvalidAccounts(string typeOfReq) : void
+  + fillPictureBox(PictureBox pbox, Bitmap bmp) : void
+  - getItemInfoButton_Click(object sender, EventArgs e) : void
+  - itemCategoryValidation() : bool
+  - itemDescriptionValidation() : bool
+  - itemsDisplayListView_MouseClick(object sender, MouseEventArgs e) : void
+  - itemNameValidation() : bool
+  - itemQuantityValidation() : bool
+  - listviewHasEmptyRow() : bool
+  - makeRequest(string typeOfReq) : void
+  - searchPictureBox_Click(object sender, EventArgs e) : void
+  - uploadItem() : void
+  - uploadProductButton_Click(object sender, EventArgs e) : void
+  - userInformationButton_Click(object sender, EventArgs e) : void
+  - userValidationAccountButton_Click(object sender, EventArgs e) : void
+  ( . . . )
+  }
+  
+  class DisplayItemForm {
+  - api_ : API
+  - informations_ :  Dictionary<string, string>
+  - userInfo_ : UserInfoForm
+  - claimItemButton_Click(object sender, EventArgs e) : void
+  - displayItems() : void
+  - userInformationButton_Click(object sender, EventArgs e) : void
+}
+
+  class UserInfoForm {
+  - userInfo_ : Dictionary<string, string>
+  - getUserData() : void
+  - userSendMessageToButton_Click(object sender, EventArgs e) : void
+}
+
+  class Api{
+ + CallApi(Dictionary<string, string> values) : string
+ + uploadImage(string imagePath) : void
+}
+
+ class UserDataValidation {
+    + dataValidation(string data): bool
+    + genderValidation(bool female, bool male) : int
+    + isEmailValid(string email) : int
+    + passwordValidation(string password, string passwordConfirmation) : bool
+    + phoneNumberValidation(string phone) : bool
+    + printPasswordError(string error): void
+  }
+
+  class ItemsModel {
+    + adresa : string
+    + categorieprodus : string
+    + dataincarcareprodus : string
+    + datainregistrare : string
+    + denumireprodus : string
+    + detaliiprodus : string
+    + email : string
+    + idprodus : string
+    + idutilizator : string
+    + imagineprodus : string
+    + nume : string
+    + sex : string
+    + telefon : string
+    + tiputilizator : string
+
+    
+    
+  }
+
+
+
+object StartupForm
+object RegisterForm
+object MenuForm
+object DisplayItemForm
+object UserInfoForm
+object Form
+
+StartupForm o-- "1" RegisterForm
+StartupForm o-- "1" MenuForm
+MenuForm o-- "1" DisplayItemForm
+DisplayItemForm o-- "1" UserInfoForm
+
+Form <|-- StartupForm
+Form <|-- RegisterForm
+Form <|-- MenuForm
+Form <|-- DisplayItemForm
+Form <|-- UserInfoForm
+
